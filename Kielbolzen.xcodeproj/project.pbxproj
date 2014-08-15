@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B756581199E578C00BDA73B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B756580199E578C00BDA73B /* Cocoa.framework */; };
+		5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B756589199E578C00BDA73B /* InfoPlist.strings */; };
+		5B75658D199E578C00BDA73B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75658C199E578C00BDA73B /* main.m */; };
+		5B756591199E578C00BDA73B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B75658F199E578C00BDA73B /* Credits.rtf */; };
+		5B756594199E578C00BDA73B /* JAKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B756593199E578C00BDA73B /* JAKAppDelegate.m */; };
+		5B756597199E578C00BDA73B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B756595199E578C00BDA73B /* MainMenu.xib */; };
+		5B756599199E578C00BDA73B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B756598199E578C00BDA73B /* Images.xcassets */; };
+		5B7565A0199E578C00BDA73B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B75659F199E578C00BDA73B /* XCTest.framework */; };
+		5B7565A1199E578C00BDA73B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B756580199E578C00BDA73B /* Cocoa.framework */; };
+		5B7565A9199E578C00BDA73B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7565A7199E578C00BDA73B /* InfoPlist.strings */; };
+		5B7565AB199E578C00BDA73B /* KielbolzenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7565AA199E578C00BDA73B /* KielbolzenTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B7565A2199E578C00BDA73B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B756575199E578C00BDA73B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B75657C199E578C00BDA73B;
+			remoteInfo = Kielbolzen;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5B75657D199E578C00BDA73B /* Kielbolzen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kielbolzen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B756580199E578C00BDA73B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5B756583199E578C00BDA73B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		5B756584199E578C00BDA73B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5B756585199E578C00BDA73B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5B756588199E578C00BDA73B /* Kielbolzen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kielbolzen-Info.plist"; sourceTree = "<group>"; };
+		5B75658A199E578C00BDA73B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B75658C199E578C00BDA73B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5B75658E199E578C00BDA73B /* Kielbolzen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kielbolzen-Prefix.pch"; sourceTree = "<group>"; };
+		5B756590199E578C00BDA73B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		5B756592199E578C00BDA73B /* JAKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAKAppDelegate.h; sourceTree = "<group>"; };
+		5B756593199E578C00BDA73B /* JAKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAKAppDelegate.m; sourceTree = "<group>"; };
+		5B756596199E578C00BDA73B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5B756598199E578C00BDA73B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5B75659E199E578C00BDA73B /* KielbolzenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KielbolzenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B75659F199E578C00BDA73B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5B7565A6199E578C00BDA73B /* KielbolzenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KielbolzenTests-Info.plist"; sourceTree = "<group>"; };
+		5B7565A8199E578C00BDA73B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B7565AA199E578C00BDA73B /* KielbolzenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KielbolzenTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B75657A199E578C00BDA73B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B756581199E578C00BDA73B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B75659B199E578C00BDA73B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7565A1199E578C00BDA73B /* Cocoa.framework in Frameworks */,
+				5B7565A0199E578C00BDA73B /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B756574199E578C00BDA73B = {
+			isa = PBXGroup;
+			children = (
+				5B756586199E578C00BDA73B /* Kielbolzen */,
+				5B7565A4199E578C00BDA73B /* KielbolzenTests */,
+				5B75657F199E578C00BDA73B /* Frameworks */,
+				5B75657E199E578C00BDA73B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5B75657E199E578C00BDA73B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B75657D199E578C00BDA73B /* Kielbolzen.app */,
+				5B75659E199E578C00BDA73B /* KielbolzenTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B75657F199E578C00BDA73B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B756580199E578C00BDA73B /* Cocoa.framework */,
+				5B75659F199E578C00BDA73B /* XCTest.framework */,
+				5B756582199E578C00BDA73B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B756582199E578C00BDA73B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B756583199E578C00BDA73B /* AppKit.framework */,
+				5B756584199E578C00BDA73B /* CoreData.framework */,
+				5B756585199E578C00BDA73B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		5B756586199E578C00BDA73B /* Kielbolzen */ = {
+			isa = PBXGroup;
+			children = (
+				5B756592199E578C00BDA73B /* JAKAppDelegate.h */,
+				5B756593199E578C00BDA73B /* JAKAppDelegate.m */,
+				5B756595199E578C00BDA73B /* MainMenu.xib */,
+				5B756598199E578C00BDA73B /* Images.xcassets */,
+				5B756587199E578C00BDA73B /* Supporting Files */,
+			);
+			path = Kielbolzen;
+			sourceTree = "<group>";
+		};
+		5B756587199E578C00BDA73B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B756588199E578C00BDA73B /* Kielbolzen-Info.plist */,
+				5B756589199E578C00BDA73B /* InfoPlist.strings */,
+				5B75658C199E578C00BDA73B /* main.m */,
+				5B75658E199E578C00BDA73B /* Kielbolzen-Prefix.pch */,
+				5B75658F199E578C00BDA73B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B7565A4199E578C00BDA73B /* KielbolzenTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B7565AA199E578C00BDA73B /* KielbolzenTests.m */,
+				5B7565A5199E578C00BDA73B /* Supporting Files */,
+			);
+			path = KielbolzenTests;
+			sourceTree = "<group>";
+		};
+		5B7565A5199E578C00BDA73B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B7565A6199E578C00BDA73B /* KielbolzenTests-Info.plist */,
+				5B7565A7199E578C00BDA73B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B75657C199E578C00BDA73B /* Kielbolzen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B7565AE199E578C00BDA73B /* Build configuration list for PBXNativeTarget "Kielbolzen" */;
+			buildPhases = (
+				5B756579199E578C00BDA73B /* Sources */,
+				5B75657A199E578C00BDA73B /* Frameworks */,
+				5B75657B199E578C00BDA73B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kielbolzen;
+			productName = Kielbolzen;
+			productReference = 5B75657D199E578C00BDA73B /* Kielbolzen.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B75659D199E578C00BDA73B /* KielbolzenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B7565B1199E578C00BDA73B /* Build configuration list for PBXNativeTarget "KielbolzenTests" */;
+			buildPhases = (
+				5B75659A199E578C00BDA73B /* Sources */,
+				5B75659B199E578C00BDA73B /* Frameworks */,
+				5B75659C199E578C00BDA73B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B7565A3199E578C00BDA73B /* PBXTargetDependency */,
+			);
+			name = KielbolzenTests;
+			productName = KielbolzenTests;
+			productReference = 5B75659E199E578C00BDA73B /* KielbolzenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B756575199E578C00BDA73B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JAK;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "JAKOTA Design Group";
+				TargetAttributes = {
+					5B75659D199E578C00BDA73B = {
+						TestTargetID = 5B75657C199E578C00BDA73B;
+					};
+				};
+			};
+			buildConfigurationList = 5B756578199E578C00BDA73B /* Build configuration list for PBXProject "Kielbolzen" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5B756574199E578C00BDA73B;
+			productRefGroup = 5B75657E199E578C00BDA73B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B75657C199E578C00BDA73B /* Kielbolzen */,
+				5B75659D199E578C00BDA73B /* KielbolzenTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B75657B199E578C00BDA73B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */,
+				5B756599199E578C00BDA73B /* Images.xcassets in Resources */,
+				5B756591199E578C00BDA73B /* Credits.rtf in Resources */,
+				5B756597199E578C00BDA73B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B75659C199E578C00BDA73B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7565A9199E578C00BDA73B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B756579199E578C00BDA73B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B75658D199E578C00BDA73B /* main.m in Sources */,
+				5B756594199E578C00BDA73B /* JAKAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B75659A199E578C00BDA73B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7565AB199E578C00BDA73B /* KielbolzenTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B7565A3199E578C00BDA73B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B75657C199E578C00BDA73B /* Kielbolzen */;
+			targetProxy = 5B7565A2199E578C00BDA73B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5B756589199E578C00BDA73B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B75658A199E578C00BDA73B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5B75658F199E578C00BDA73B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B756590199E578C00BDA73B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		5B756595199E578C00BDA73B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B756596199E578C00BDA73B /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		5B7565A7199E578C00BDA73B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B7565A8199E578C00BDA73B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5B7565AC199E578C00BDA73B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5B7565AD199E578C00BDA73B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5B7565AF199E578C00BDA73B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kielbolzen/Kielbolzen-Prefix.pch";
+				INFOPLIST_FILE = "Kielbolzen/Kielbolzen-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5B7565B0199E578C00BDA73B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kielbolzen/Kielbolzen-Prefix.pch";
+				INFOPLIST_FILE = "Kielbolzen/Kielbolzen-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5B7565B2199E578C00BDA73B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kielbolzen.app/Contents/MacOS/Kielbolzen";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kielbolzen/Kielbolzen-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "KielbolzenTests/KielbolzenTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		5B7565B3199E578C00BDA73B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kielbolzen.app/Contents/MacOS/Kielbolzen";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kielbolzen/Kielbolzen-Prefix.pch";
+				INFOPLIST_FILE = "KielbolzenTests/KielbolzenTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B756578199E578C00BDA73B /* Build configuration list for PBXProject "Kielbolzen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B7565AC199E578C00BDA73B /* Debug */,
+				5B7565AD199E578C00BDA73B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B7565AE199E578C00BDA73B /* Build configuration list for PBXNativeTarget "Kielbolzen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B7565AF199E578C00BDA73B /* Debug */,
+				5B7565B0199E578C00BDA73B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5B7565B1199E578C00BDA73B /* Build configuration list for PBXNativeTarget "KielbolzenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B7565B2199E578C00BDA73B /* Debug */,
+				5B7565B3199E578C00BDA73B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B756575199E578C00BDA73B /* Project object */;
+}
