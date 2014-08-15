@@ -10,6 +10,8 @@
 
 @interface JAKAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (strong, nonatomic) IBOutlet  NSMenu          *theMenu;
+@property (strong, nonatomic)           NSStatusItem    *statusBar;
+@property (assign)                      BOOL            flip;
 
 @end

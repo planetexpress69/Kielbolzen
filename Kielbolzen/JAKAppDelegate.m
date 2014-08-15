@@ -12,7 +12,24 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    self.flip = NO;
+    self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    self.statusBar.image = [NSImage imageNamed:@"statusicon_default"];
+    self.statusBar.menu = self.theMenu;
+    self.statusBar.highlightMode = YES;
+
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(payload:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+- (IBAction)payload:(id)sender
+{
+    self.statusBar.image =
+    self.flip ? [NSImage imageNamed:@"statusicon_default"] : [NSImage imageNamed:@"statusicon_alternate"];
+    self.flip = !self.flip;
 }
 
 @end

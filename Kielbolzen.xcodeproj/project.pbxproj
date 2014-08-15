@@ -10,7 +10,6 @@
 		5B756581199E578C00BDA73B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B756580199E578C00BDA73B /* Cocoa.framework */; };
 		5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B756589199E578C00BDA73B /* InfoPlist.strings */; };
 		5B75658D199E578C00BDA73B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75658C199E578C00BDA73B /* main.m */; };
-		5B756591199E578C00BDA73B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B75658F199E578C00BDA73B /* Credits.rtf */; };
 		5B756594199E578C00BDA73B /* JAKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B756593199E578C00BDA73B /* JAKAppDelegate.m */; };
 		5B756597199E578C00BDA73B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B756595199E578C00BDA73B /* MainMenu.xib */; };
 		5B756599199E578C00BDA73B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B756598199E578C00BDA73B /* Images.xcassets */; };
@@ -18,6 +17,8 @@
 		5B7565A1199E578C00BDA73B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B756580199E578C00BDA73B /* Cocoa.framework */; };
 		5B7565A9199E578C00BDA73B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7565A7199E578C00BDA73B /* InfoPlist.strings */; };
 		5B7565AB199E578C00BDA73B /* KielbolzenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7565AA199E578C00BDA73B /* KielbolzenTests.m */; };
+		5B9B65B6199E61830012B99E /* statusicon_alternate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B65B4199E61830012B99E /* statusicon_alternate@2x.png */; };
+		5B9B65B7199E61830012B99E /* statusicon_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B65B5199E61830012B99E /* statusicon_default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,6 @@
 		5B75658A199E578C00BDA73B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B75658C199E578C00BDA73B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B75658E199E578C00BDA73B /* Kielbolzen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kielbolzen-Prefix.pch"; sourceTree = "<group>"; };
-		5B756590199E578C00BDA73B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		5B756592199E578C00BDA73B /* JAKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAKAppDelegate.h; sourceTree = "<group>"; };
 		5B756593199E578C00BDA73B /* JAKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAKAppDelegate.m; sourceTree = "<group>"; };
 		5B756596199E578C00BDA73B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		5B7565A6199E578C00BDA73B /* KielbolzenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KielbolzenTests-Info.plist"; sourceTree = "<group>"; };
 		5B7565A8199E578C00BDA73B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B7565AA199E578C00BDA73B /* KielbolzenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KielbolzenTests.m; sourceTree = "<group>"; };
+		5B9B65B4199E61830012B99E /* statusicon_alternate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_alternate@2x.png"; sourceTree = "<group>"; };
+		5B9B65B5199E61830012B99E /* statusicon_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,8 @@
 		5B756586199E578C00BDA73B /* Kielbolzen */ = {
 			isa = PBXGroup;
 			children = (
+				5B9B65B4199E61830012B99E /* statusicon_alternate@2x.png */,
+				5B9B65B5199E61830012B99E /* statusicon_default@2x.png */,
 				5B756592199E578C00BDA73B /* JAKAppDelegate.h */,
 				5B756593199E578C00BDA73B /* JAKAppDelegate.m */,
 				5B756595199E578C00BDA73B /* MainMenu.xib */,
@@ -131,7 +135,6 @@
 				5B756589199E578C00BDA73B /* InfoPlist.strings */,
 				5B75658C199E578C00BDA73B /* main.m */,
 				5B75658E199E578C00BDA73B /* Kielbolzen-Prefix.pch */,
-				5B75658F199E578C00BDA73B /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -231,10 +234,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9B65B7199E61830012B99E /* statusicon_default@2x.png in Resources */,
 				5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */,
 				5B756599199E578C00BDA73B /* Images.xcassets in Resources */,
-				5B756591199E578C00BDA73B /* Credits.rtf in Resources */,
 				5B756597199E578C00BDA73B /* MainMenu.xib in Resources */,
+				5B9B65B6199E61830012B99E /* statusicon_alternate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,14 +287,6 @@
 				5B75658A199E578C00BDA73B /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5B75658F199E578C00BDA73B /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B756590199E578C00BDA73B /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		5B756595199E578C00BDA73B /* MainMenu.xib */ = {
@@ -467,6 +463,7 @@
 				5B7565B0199E578C00BDA73B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B7565B1199E578C00BDA73B /* Build configuration list for PBXNativeTarget "KielbolzenTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +472,7 @@
 				5B7565B3199E578C00BDA73B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
