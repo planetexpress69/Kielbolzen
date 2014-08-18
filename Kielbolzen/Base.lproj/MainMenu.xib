@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="JAKAppDelegate">
             <connections>
                 <outlet property="theMenu" destination="lom-Yn-nsA" id="qU9-9v-Hi5"/>
+                <outlet property="theMenuItemAtZero" destination="gwK-OF-6Wm" id="Lvo-qY-hXr"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>

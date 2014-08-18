@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "LovelyFetcherEngine.h"
 @interface JAKAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (strong, nonatomic) IBOutlet  NSMenu          *theMenu;
-@property (strong, nonatomic)           NSStatusItem    *statusBar;
-@property (assign)                      BOOL            flip;
+@property (strong, nonatomic) IBOutlet  NSMenu                  *theMenu;
+@property (strong, nonatomic) IBOutlet  NSMenuItem              *theMenuItemAtZero;
+@property (strong, nonatomic)           NSStatusItem            *statusBar;
+@property (assign, getter = isRunning)  BOOL                    running;
+@property (strong, nonatomic)           LovelyFetcherEngine     *lovelyFetcherEngine;
 
 @end

@@ -1,0 +1,16 @@
+PODS:
+  - MKNetworkKit (0.87):
+    - Reachability (~> 3.1.0)
+  - Reachability (3.1.1)
+  - XMLReader (0.0.2)
+
+DEPENDENCIES:
+  - MKNetworkKit
+  - XMLReader
+
+SPEC CHECKSUMS:
+  MKNetworkKit: 83e6296a8d42e98a71880424a889773654846d74
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  XMLReader: 2264fd2f8167343285a9943929c3b7e4b74626c0
+
+COCOAPODS: 0.33.1

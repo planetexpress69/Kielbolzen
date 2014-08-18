@@ -19,6 +19,21 @@
 		5B7565AB199E578C00BDA73B /* KielbolzenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7565AA199E578C00BDA73B /* KielbolzenTests.m */; };
 		5B9B65B6199E61830012B99E /* statusicon_alternate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B65B4199E61830012B99E /* statusicon_alternate@2x.png */; };
 		5B9B65B7199E61830012B99E /* statusicon_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B65B5199E61830012B99E /* statusicon_default@2x.png */; };
+		5BC633F019A1EC4500E66D6D /* statusicon_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633E619A1EC4500E66D6D /* statusicon_0.png */; };
+		5BC633F119A1EC4500E66D6D /* statusicon_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633E719A1EC4500E66D6D /* statusicon_0@2x.png */; };
+		5BC633F219A1EC4500E66D6D /* statusicon_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633E819A1EC4500E66D6D /* statusicon_1.png */; };
+		5BC633F319A1EC4500E66D6D /* statusicon_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633E919A1EC4500E66D6D /* statusicon_1@2x.png */; };
+		5BC633F419A1EC4500E66D6D /* statusicon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633EA19A1EC4500E66D6D /* statusicon_2.png */; };
+		5BC633F519A1EC4500E66D6D /* statusicon_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633EB19A1EC4500E66D6D /* statusicon_2@2x.png */; };
+		5BC633F619A1EC4500E66D6D /* statusicon_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633EC19A1EC4500E66D6D /* statusicon_3.png */; };
+		5BC633F719A1EC4500E66D6D /* statusicon_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633ED19A1EC4500E66D6D /* statusicon_3@2x.png */; };
+		5BC633F819A1EC4500E66D6D /* statusicon_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633EE19A1EC4500E66D6D /* statusicon_4.png */; };
+		5BC633F919A1EC4500E66D6D /* statusicon_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633EF19A1EC4500E66D6D /* statusicon_4@2x.png */; };
+		5BC633FC19A1ED6100E66D6D /* LovelyFetcherEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC633FB19A1ED6100E66D6D /* LovelyFetcherEngine.m */; };
+		5BC633FF19A1FD7C00E66D6D /* statusicon_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633FD19A1FD7C00E66D6D /* statusicon_error.png */; };
+		5BC6340019A1FD7C00E66D6D /* statusicon_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC633FE19A1FD7C00E66D6D /* statusicon_error@2x.png */; };
+		5BC6340219A1FFA500E66D6D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BC6340119A1FFA500E66D6D /* README.md */; };
+		DACBBF533E2342FEB22BBFA2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 144D405988104DB181AB381B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		144D405988104DB181AB381B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B75657D199E578C00BDA73B /* Kielbolzen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kielbolzen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B756580199E578C00BDA73B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5B756583199E578C00BDA73B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -52,6 +68,22 @@
 		5B7565AA199E578C00BDA73B /* KielbolzenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KielbolzenTests.m; sourceTree = "<group>"; };
 		5B9B65B4199E61830012B99E /* statusicon_alternate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_alternate@2x.png"; sourceTree = "<group>"; };
 		5B9B65B5199E61830012B99E /* statusicon_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_default@2x.png"; sourceTree = "<group>"; };
+		5BC633E619A1EC4500E66D6D /* statusicon_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusicon_0.png; sourceTree = "<group>"; };
+		5BC633E719A1EC4500E66D6D /* statusicon_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_0@2x.png"; sourceTree = "<group>"; };
+		5BC633E819A1EC4500E66D6D /* statusicon_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusicon_1.png; sourceTree = "<group>"; };
+		5BC633E919A1EC4500E66D6D /* statusicon_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_1@2x.png"; sourceTree = "<group>"; };
+		5BC633EA19A1EC4500E66D6D /* statusicon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusicon_2.png; sourceTree = "<group>"; };
+		5BC633EB19A1EC4500E66D6D /* statusicon_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_2@2x.png"; sourceTree = "<group>"; };
+		5BC633EC19A1EC4500E66D6D /* statusicon_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusicon_3.png; sourceTree = "<group>"; };
+		5BC633ED19A1EC4500E66D6D /* statusicon_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_3@2x.png"; sourceTree = "<group>"; };
+		5BC633EE19A1EC4500E66D6D /* statusicon_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusicon_4.png; sourceTree = "<group>"; };
+		5BC633EF19A1EC4500E66D6D /* statusicon_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_4@2x.png"; sourceTree = "<group>"; };
+		5BC633FA19A1ED6100E66D6D /* LovelyFetcherEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LovelyFetcherEngine.h; sourceTree = "<group>"; };
+		5BC633FB19A1ED6100E66D6D /* LovelyFetcherEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LovelyFetcherEngine.m; sourceTree = "<group>"; };
+		5BC633FD19A1FD7C00E66D6D /* statusicon_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusicon_error.png; sourceTree = "<group>"; };
+		5BC633FE19A1FD7C00E66D6D /* statusicon_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusicon_error@2x.png"; sourceTree = "<group>"; };
+		5BC6340119A1FFA500E66D6D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		6A3CCC2397AA417F8A9C52CA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B756581199E578C00BDA73B /* Cocoa.framework in Frameworks */,
+				DACBBF533E2342FEB22BBFA2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,10 +111,12 @@
 		5B756574199E578C00BDA73B = {
 			isa = PBXGroup;
 			children = (
+				5BC6340119A1FFA500E66D6D /* README.md */,
 				5B756586199E578C00BDA73B /* Kielbolzen */,
 				5B7565A4199E578C00BDA73B /* KielbolzenTests */,
 				5B75657F199E578C00BDA73B /* Frameworks */,
 				5B75657E199E578C00BDA73B /* Products */,
+				6A3CCC2397AA417F8A9C52CA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +135,7 @@
 				5B756580199E578C00BDA73B /* Cocoa.framework */,
 				5B75659F199E578C00BDA73B /* XCTest.framework */,
 				5B756582199E578C00BDA73B /* Other Frameworks */,
+				144D405988104DB181AB381B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,13 +153,27 @@
 		5B756586199E578C00BDA73B /* Kielbolzen */ = {
 			isa = PBXGroup;
 			children = (
+				5BC633FD19A1FD7C00E66D6D /* statusicon_error.png */,
+				5BC633FE19A1FD7C00E66D6D /* statusicon_error@2x.png */,
+				5BC633E619A1EC4500E66D6D /* statusicon_0.png */,
+				5BC633E719A1EC4500E66D6D /* statusicon_0@2x.png */,
+				5BC633E819A1EC4500E66D6D /* statusicon_1.png */,
+				5BC633E919A1EC4500E66D6D /* statusicon_1@2x.png */,
+				5BC633EA19A1EC4500E66D6D /* statusicon_2.png */,
+				5BC633EB19A1EC4500E66D6D /* statusicon_2@2x.png */,
+				5BC633EC19A1EC4500E66D6D /* statusicon_3.png */,
+				5BC633ED19A1EC4500E66D6D /* statusicon_3@2x.png */,
+				5BC633EE19A1EC4500E66D6D /* statusicon_4.png */,
+				5BC633EF19A1EC4500E66D6D /* statusicon_4@2x.png */,
 				5B9B65B4199E61830012B99E /* statusicon_alternate@2x.png */,
 				5B9B65B5199E61830012B99E /* statusicon_default@2x.png */,
+				5B756595199E578C00BDA73B /* MainMenu.xib */,
 				5B756592199E578C00BDA73B /* JAKAppDelegate.h */,
 				5B756593199E578C00BDA73B /* JAKAppDelegate.m */,
-				5B756595199E578C00BDA73B /* MainMenu.xib */,
 				5B756598199E578C00BDA73B /* Images.xcassets */,
 				5B756587199E578C00BDA73B /* Supporting Files */,
+				5BC633FA19A1ED6100E66D6D /* LovelyFetcherEngine.h */,
+				5BC633FB19A1ED6100E66D6D /* LovelyFetcherEngine.m */,
 			);
 			path = Kielbolzen;
 			sourceTree = "<group>";
@@ -164,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B7565AE199E578C00BDA73B /* Build configuration list for PBXNativeTarget "Kielbolzen" */;
 			buildPhases = (
+				3B15D2EDE3694B9684F2ED5F /* Check Pods Manifest.lock */,
 				5B756579199E578C00BDA73B /* Sources */,
 				5B75657A199E578C00BDA73B /* Frameworks */,
 				5B75657B199E578C00BDA73B /* Resources */,
+				C6D29E62FBC14825B9AE528C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,11 +286,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC633F719A1EC4500E66D6D /* statusicon_3@2x.png in Resources */,
+				5BC633F519A1EC4500E66D6D /* statusicon_2@2x.png in Resources */,
+				5BC633F219A1EC4500E66D6D /* statusicon_1.png in Resources */,
+				5BC633F119A1EC4500E66D6D /* statusicon_0@2x.png in Resources */,
 				5B9B65B7199E61830012B99E /* statusicon_default@2x.png in Resources */,
 				5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */,
+				5BC6340219A1FFA500E66D6D /* README.md in Resources */,
+				5BC633F919A1EC4500E66D6D /* statusicon_4@2x.png in Resources */,
 				5B756599199E578C00BDA73B /* Images.xcassets in Resources */,
+				5BC633F619A1EC4500E66D6D /* statusicon_3.png in Resources */,
+				5BC633F019A1EC4500E66D6D /* statusicon_0.png in Resources */,
+				5BC633F819A1EC4500E66D6D /* statusicon_4.png in Resources */,
 				5B756597199E578C00BDA73B /* MainMenu.xib in Resources */,
+				5BC633F319A1EC4500E66D6D /* statusicon_1@2x.png in Resources */,
+				5BC633FF19A1FD7C00E66D6D /* statusicon_error.png in Resources */,
 				5B9B65B6199E61830012B99E /* statusicon_alternate@2x.png in Resources */,
+				5BC6340019A1FD7C00E66D6D /* statusicon_error@2x.png in Resources */,
+				5BC633F419A1EC4500E66D6D /* statusicon_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,11 +317,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B15D2EDE3694B9684F2ED5F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C6D29E62FBC14825B9AE528C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5B756579199E578C00BDA73B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC633FC19A1ED6100E66D6D /* LovelyFetcherEngine.m in Sources */,
 				5B75658D199E578C00BDA73B /* main.m in Sources */,
 				5B756594199E578C00BDA73B /* JAKAppDelegate.m in Sources */,
 			);
@@ -380,6 +478,7 @@
 		};
 		5B7565AF199E578C00BDA73B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A3CCC2397AA417F8A9C52CA /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -393,6 +492,7 @@
 		};
 		5B7565B0199E578C00BDA73B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A3CCC2397AA417F8A9C52CA /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
