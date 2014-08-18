@@ -15,6 +15,7 @@ Kielbolzen itself runs as a headless agent, so there's no main window and main m
 After being started it polls a "sort of" webservice every 5 seconds. Since the response is encoded in XML, there's some parsing involved.
 All heavy lifting is done by [MKNetworkKit](https://github.com/MugunthKumar/MKNetworkKit) and [XMLReader](https://github.com/amarcadet/XMLReader).
 
+## Backend mocking
 ```
 <?php
 header ("Content-Type:text/xml");

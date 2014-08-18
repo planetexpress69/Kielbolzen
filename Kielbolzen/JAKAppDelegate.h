@@ -10,10 +10,11 @@
 #import "LovelyFetcherEngine.h"
 @interface JAKAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (strong, nonatomic) IBOutlet  NSMenu                  *theMenu;
-@property (strong, nonatomic) IBOutlet  NSMenuItem              *theMenuItemAtZero;
-@property (strong, nonatomic)           NSStatusItem            *statusBar;
-@property (assign, getter = isRunning)  BOOL                    running;
-@property (strong, nonatomic)           LovelyFetcherEngine     *lovelyFetcherEngine;
+@property (strong, nonatomic) IBOutlet      NSMenu                  *theMenu;
+@property (strong, nonatomic) IBOutlet      NSMenuItem              *theMenuItemAtZero;
+@property (strong, nonatomic)               NSStatusItem            *statusBar;
+@property (assign, getter = isRunning)      BOOL                    running;
+@property (assign, getter = isConnected)    BOOL                    connected;
+@property (strong, nonatomic)               LovelyFetcherEngine     *lovelyFetcherEngine;
 
 @end
