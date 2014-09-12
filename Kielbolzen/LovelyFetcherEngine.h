@@ -9,6 +9,23 @@
 #import "MKNetworkEngine.h"
 
 @interface LovelyFetcherEngine : MKNetworkEngine
+
+- (void)fetchMainjs:(NSString *)credentials
+       onCompletion:(MKNKResponseBlock)completionBlock
+            onError:(MKNKErrorBlock)errorBlock;
+
+- (void)fetchStatus:(NSString *)credentials
+      onCompletion:(MKNKResponseBlock)completionBlock
+           onError:(MKNKErrorBlock)errorBlock;
+
+- (void)fetchCurrentPlmn:(NSString *)credentials
+                 onCompletion:(MKNKResponseBlock)completionBlock
+                      onError:(MKNKErrorBlock)errorBlock;
+
+- (void)fetchTrafficStats:(NSString *)credentials
+             onCompletion:(MKNKResponseBlock)completionBlock
+                  onError:(MKNKErrorBlock)errorBlock;
+
 - (void)fetchLevelForCredentials:(NSString *)credentials
                     onCompletion:(MKNKResponseBlock)completionBlock
                          onError:(MKNKErrorBlock)errorBlock;
