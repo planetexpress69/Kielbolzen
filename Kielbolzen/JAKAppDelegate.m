@@ -115,7 +115,7 @@
         NSError *parsingError   = nil;
         NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
                                                               error:&parsingError];
-        NSMutableDictionary *macroNetTypes= nil;
+        NSMutableDictionary *macroNetTypes= [self.macroImporter networkTypes];
         
         if (dResponse && !parsingError) {
             NSString *sLevel =  dResponse[@"response"][@"SignalStrength"][@"text"];
@@ -126,10 +126,8 @@
             NSString *sNetworkTypeEx = dResponse[@"response"][@"CurrentNetworkTypeEx"][@"text"];
             NSString *sNetMode = nil;
 
-            if (sNetworkType.length > 0) {
-                macroNetTypes= [self.macroImporter networkTypes];
-            } else if (sNetworkTypeEx > 0) {
-                macroNetTypes= [self.macroImporter networkTypesEx];
+            if (sNetworkType.length == 0 && sNetworkTypeEx.length > 0) {
+                sNetworkType = sNetworkTypeEx;
             }
 
             for (NSString *key in macroNetTypes) {
