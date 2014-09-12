@@ -10,16 +10,27 @@
 #import <XMLReader/XMLReader.h>
 
 @implementation JAKAppDelegate
+// ---------------------------------------------------------------------------------------------------------------------
+#pragma mark - Lifecycle
+// ---------------------------------------------------------------------------------------------------------------------
+- (instancetype)init
+{
+    if (self = [super init]) {
+
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)awakeFromNib
 {
     self.theMenuItemAtOne.title= @"Waiting...";
     self.theMenuItemAtTwo.title= @"Waiting...";
     self.theMenuItemAtThree.title= @"Waiting...";
-}
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
 
     self.connected                  = NO;
     self.running                    = NO;
@@ -29,11 +40,6 @@
     self.statusBar.highlightMode    = YES;
     self.theMenuItemAtZero.title    = @"Initializing...";
 
-    [NSTimer scheduledTimerWithTimeInterval:5.0
-                                     target:self
-                                   selector:@selector(payload:)
-                                   userInfo:nil
-                                    repeats:YES];
 
     Reachability *reachabilityInfo;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -41,44 +47,71 @@
                                                  name:kReachabilityChangedNotification
                                                object:reachabilityInfo];
 
-    self.lovelyFetcherEngine = [[LovelyFetcherEngine alloc]initWithHostName:@"www.huaweimobilewifi.com"];
-    self.macroImporter = [MacroImporter new];
-    
-    [self.lovelyFetcherEngine fetchMainjs:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
-        if (!self.isConnected) {
-            self.theMenuItemAtZero.title = @"No connection. :-(";
-            self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-            return;
-        }
-        
-        if (self.isRunning)
-            return;
-        
-        [self.macroImporter extractNetworkTypes: completedOperation.responseString];
-        [self.macroImporter extractPlmnRat: completedOperation.responseString];
-        
-    } onError:^(NSError *error) {
-        DLog(@"error: %@", error);
-        self.theMenuItemAtZero.title = error.localizedDescription;
-        self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-        self.running = NO;
-    }];
+
 }
 
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+
+
+    [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(payload:)
+                                   userInfo:nil
+                                    repeats:YES];
+
+    self.lovelyFetcherEngine = [[LovelyFetcherEngine alloc] initWithHostName:HOST];
+    self.macroImporter = [MacroImporter new];
+    
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+#pragma mark - Payload - fetching some stuff from the Mifi
+// ---------------------------------------------------------------------------------------------------------------------
 - (IBAction)payload:(id)sender
 {
+
+    // we're not connected at all, so get outta here
     if (!self.isConnected) {
         self.theMenuItemAtZero.title = @"No connection. :-(";
         self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
         return;
     }
 
+    // we're connected but haven't gotten stuff we rely on
+    if (self.macroImporter.networkTypes == nil) {
+
+        [self.lovelyFetcherEngine fetchMainjs:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
+            if (!self.isConnected) {
+                self.theMenuItemAtZero.title = @"No connection. :-(";
+                self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
+                return;
+            }
+
+            [self.macroImporter extractNetworkTypes: completedOperation.responseString];
+            [self.macroImporter extractPlmnRat: completedOperation.responseString];
+
+            NSLog(@"Could have gotten the stuff from mains.js I'm interested in. Nice!");
+
+        } onError:^(NSError *error) {
+            DLog(@"error: %@", error);
+            self.theMenuItemAtZero.title = error.localizedDescription;
+            self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
+        }];
+
+        // get outta here. next time we may have gotten the stuff from main.js...
+        return;
+    }
+
+
+    // from now on avoid pending requests...
     if (self.isRunning)
         return;
 
+    // get the mifi's state finally
     self.running = YES;
+
     [self.lovelyFetcherEngine fetchStatus:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
-        
         NSError *parsingError   = nil;
         NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
                                                               error:&parsingError];
@@ -92,14 +125,13 @@
             NSString *sNetworkType = dResponse[@"response"][@"CurrentNetworkType"][@"text"];
             NSString *sNetworkTypeEx = dResponse[@"response"][@"CurrentNetworkTypeEx"][@"text"];
             NSString *sNetMode = nil;
-            
-//            NSLog(@"%@,%d,%@,%d", sNetworkType, sNetworkType.length, sNetworkTypeEx, sNetworkTypeEx.length);
+
             if (sNetworkType.length > 0) {
                 macroNetTypes= [self.macroImporter networkTypes];
             } else if (sNetworkTypeEx > 0) {
                 macroNetTypes= [self.macroImporter networkTypesEx];
             }
-            
+
             for (NSString *key in macroNetTypes) {
                 if (((NSNumber *)macroNetTypes[key]).intValue == sNetworkType.intValue) {
                     sNetMode = key;
@@ -109,20 +141,18 @@
             NSString *sLevelStr = @"No Service";
             
             if (sStatus.intValue == 2) {
-                sLevelStr= [NSString stringWithFormat:@"Level: %@%% (%@)", [NSString stringWithFormat:@"%d", (sLevel.intValue)], sNetMode];
+                sLevelStr= [NSString stringWithFormat:@"Level: %d%% (%@)", sLevel.intValue, sNetMode];
             }
+
             self.theMenuItemAtZero.title = sLevelStr;
-            self.theMenuItemAtThree.title =[NSString stringWithFormat:@"Battery: %@%%", [NSString stringWithFormat:@"%d", (sBatLevel.intValue)]];
+            self.theMenuItemAtThree.title =[NSString stringWithFormat:@"Battery: %d%%", sBatLevel.intValue];
 
             self.statusBar.image= [NSImage imageNamed:[NSString stringWithFormat:@"signal_%@.gif", sIcon]];
-//            self.statusBar.title = [NSString stringWithFormat:@"%@%%", [NSString stringWithFormat:@"%d", (sLevel.intValue)]];
-            self.running = NO;
         } else {
             self.theMenuItemAtZero.title = @"Garbled response";
             self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-            self.running = NO;
         }
-        
+        self.running = NO;
     } onError:^(NSError *error) {
         DLog(@"error: %@", error);
         self.theMenuItemAtZero.title = error.localizedDescription;
@@ -130,8 +160,8 @@
         self.running = NO;
     }];
 
+
     [self.lovelyFetcherEngine fetchCurrentPlmn:@"foo" onCompletion:^(MKNetworkOperation *  completedOperation) {
-        
         NSError *parsingError   = nil;
         NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
                                                               error:&parsingError];
@@ -139,9 +169,8 @@
         
         if (dResponse && !parsingError) {
             NSMutableDictionary *currentPlmnRats = [self.macroImporter plmnRat];
-            
             NSString *sShort =  dResponse[@"response"][@"ShortName"][@"text"];
-            NSString *sState =  dResponse[@"response"][@"State"][@"text"];
+            //NSString *sState =  dResponse[@"response"][@"State"][@"text"];
             NSString *sRat =  dResponse[@"response"][@"Rat"][@"text"];
             NSString *sPlmnRat = nil;
             
@@ -156,13 +185,11 @@
                 sProvider= [NSString stringWithFormat:@"Provider: %@ (%@)", sShort, sPlmnRat];
             }
             self.theMenuItemAtTwo.title = sProvider;
-            self.running = NO;
         } else {
             self.theMenuItemAtTwo.title = @"Garbled response";
             self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-            self.running = NO;
         }
-        
+        self.running = NO;
     } onError:^(NSError *error) {
         DLog(@"error: %@", error);
         self.theMenuItemAtZero.title = error.localizedDescription;
@@ -171,32 +198,30 @@
     }];
 
     [self.lovelyFetcherEngine fetchTrafficStats:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
-
         NSError *parsingError   = nil;
         NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
                                                               error:&parsingError];
         if (dResponse && !parsingError) {
-            NSString *sCTime =  dResponse[@"response"][@"CurrentConnectTime"][@"text"];
-            NSString *sCUpload =  dResponse[@"response"][@"CurrentUpload"][@"text"];
-            NSString *sCUploadRate =  dResponse[@"response"][@"CurrentUploadRate"][@"text"];
-            NSString *sCDownload =  dResponse[@"response"][@"CurrentDownload"][@"text"];
+            /*
             NSString *sCDownloadRate =  dResponse[@"response"][@"CurrentDownloadRate"][@"text"];
             NSString *sTTime =  dResponse[@"response"][@"TotalConnectTime"][@"text"];
             NSString *sTUpload =  dResponse[@"response"][@"TotalUpload"][@"text"];
             NSString *sTDownload =  dResponse[@"response"][@"TotalDownload"][@"text"];
+            NSString *sCTime =  dResponse[@"response"][@"CurrentConnectTime"][@"text"];
+            NSString *sCUploadRate =  dResponse[@"response"][@"CurrentUploadRate"][@"text"];
+            */
+            NSString *sCUpload =  dResponse[@"response"][@"CurrentUpload"][@"text"];
+            NSString *sCDownload =  dResponse[@"response"][@"CurrentDownload"][@"text"];
 
             NSString *fsCDown = [NSByteCountFormatter stringFromByteCount:sCDownload.intValue countStyle:NSByteCountFormatterCountStyleFile];
             NSString *fsCUp = [NSByteCountFormatter stringFromByteCount:sCUpload.intValue countStyle:NSByteCountFormatterCountStyleFile];
-            
             self.theMenuItemAtOne.title =
             [NSString stringWithFormat:@"TX: %@/%@", fsCUp, fsCDown];
-            self.running = NO;
         } else {
             self.theMenuItemAtOne.title = @"Garbled response";
             self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-            self.running = NO;
         }
-
+        self.running = NO;
     } onError:^(NSError *error) {
         DLog(@"error: %@", error);
         self.theMenuItemAtZero.title = error.localizedDescription;
@@ -204,38 +229,21 @@
         self.running = NO;
     }];
 
-//    [self.lovelyFetcherEngine fetchLevelForCredentials:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
-//
-//        NSError *parsingError   = nil;
-//        NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
-//                                                              error:&parsingError];
-//
-//        if (dResponse && !parsingError) {
-//            NSString *sLevel =  dResponse[@"payload"][@"value"][@"text"];
-//            self.theMenuItemAtZero.title =
-//            [NSString stringWithFormat:@"Level: %@%%", [NSString stringWithFormat:@"%d", (sLevel.intValue * 20)]];
-//            self.statusBar.image = [NSImage imageNamed:[NSString stringWithFormat:@"statusicon_%@", sLevel]];
-//            self.running = NO;
-//        } else {
-//            self.theMenuItemAtZero.title = @"Garbled response";
-//            self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-//            self.running = NO;
-//        }
-//
-//    } onError:^(NSError *error) {
-//        DLog(@"error: %@", error);
-//        self.theMenuItemAtZero.title = error.localizedDescription;
-//        self.statusBar.image = [NSImage imageNamed:@"statusicon_error"];
-//        self.running = NO;
-//    }];
-
 }
 
+
+// ---------------------------------------------------------------------------------------------------------------------
+#pragma mark - Callback for coinnection stte changes.
+// ---------------------------------------------------------------------------------------------------------------------
 - (void)myReachabilityDidChangedMethod:(NSNotification *)notification
 {
     Reachability *reachability = (Reachability *)notification.object;
     NetworkStatus internetStatus = [reachability currentReachabilityStatus];
     if (internetStatus != NotReachable) {
+
+        // necessary to re-read the main.js?
+        self.macroImporter.networkTypes = nil;
+
         DLog(@"Connected, so move on!");
         self.connected = YES;
     }
@@ -245,9 +253,5 @@
     }
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 @end

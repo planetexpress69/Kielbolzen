@@ -11,7 +11,7 @@
 #import "MacroImporter.h"
 
 @interface JAKAppDelegate : NSObject <NSApplicationDelegate>
-
+// ---------------------------------------------------------------------------------------------------------------------
 @property (strong, nonatomic) IBOutlet      NSMenu                  *theMenu;
 @property (strong, nonatomic) IBOutlet      NSMenuItem              *theMenuItemAtZero;
 @property (strong, nonatomic) IBOutlet      NSMenuItem              *theMenuItemAtOne;
@@ -23,6 +23,5 @@
 @property (assign, getter = isConnected)    BOOL                    connected;
 @property (strong, nonatomic)               LovelyFetcherEngine     *lovelyFetcherEngine;
 @property (strong, nonatomic)               MacroImporter           *macroImporter;
-@property (strong, nonatomic)               NSMutableDictionary     *networkTypes;
-
+// ---------------------------------------------------------------------------------------------------------------------
 @end

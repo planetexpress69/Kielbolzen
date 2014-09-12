@@ -14,13 +14,12 @@
        onCompletion:(MKNKResponseBlock)completionBlock
             onError:(MKNKErrorBlock)errorBlock
 {
-    
     NSDictionary *params;
-    
     MKNetworkOperation *op = [self operationWithPath:@"js/main.js"
                                               params:params
                                           httpMethod:@"GET"
                                                  ssl:NO];
+
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         completionBlock(completedOperation);
@@ -88,28 +87,6 @@
         errorBlock(error);
     }];
     
-    [self enqueueOperation:op];
-
-}
-
-- (void)fetchLevelForCredentials:(NSString *)credentials
-                    onCompletion:(MKNKResponseBlock)completionBlock
-                         onError:(MKNKErrorBlock)errorBlock
-{
-
-    NSDictionary *params = @{ @"credentials" : credentials };
-
-    MKNetworkOperation *op = [self operationWithPath:@"api/monitoring/status"
-                                              params:params
-                                          httpMethod:@"GET"
-                                                 ssl:NO];
-
-    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        completionBlock(completedOperation);
-    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        errorBlock(error);
-    }];
-
     [self enqueueOperation:op];
 
 }

@@ -26,8 +26,5 @@
              onCompletion:(MKNKResponseBlock)completionBlock
                   onError:(MKNKErrorBlock)errorBlock;
 
-- (void)fetchLevelForCredentials:(NSString *)credentials
-                    onCompletion:(MKNKResponseBlock)completionBlock
-                         onError:(MKNKErrorBlock)errorBlock;
 
 @end

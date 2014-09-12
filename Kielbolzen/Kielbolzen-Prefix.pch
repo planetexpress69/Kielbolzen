@@ -7,3 +7,5 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif
+
+#define HOST @"www.teambender.de" // @"www.huaweimobilewifi.com"]

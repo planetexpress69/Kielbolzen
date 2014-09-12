@@ -75,9 +75,9 @@
         NSString *matchString = [[sPayload substringWithRange: [match rangeAtIndex:1]]
                                   stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSNumber *matchNumber = [NSNumber numberWithInt: [sPayload substringWithRange: [match rangeAtIndex:2]].intValue];
-        NSLog(@"%@, %@, %@", [sPayload substringWithRange: [match rangeAtIndex:0]],
-              [sPayload substringWithRange: [match rangeAtIndex:1]],
-              [sPayload substringWithRange: [match rangeAtIndex:2]]);
+        //NSLog(@"%@, %@, %@", [sPayload substringWithRange: [match rangeAtIndex:0]],
+        //     [sPayload substringWithRange: [match rangeAtIndex:1]],
+        //      [sPayload substringWithRange: [match rangeAtIndex:2]]);
         [dResult setObject:matchNumber forKey:matchString];
 
     }
