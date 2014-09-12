@@ -10,6 +10,88 @@
 
 @implementation LovelyFetcherEngine
 
+- (void)fetchMainjs:(NSString *)credentials
+       onCompletion:(MKNKResponseBlock)completionBlock
+            onError:(MKNKErrorBlock)errorBlock
+{
+    
+    NSDictionary *params;
+    
+    MKNetworkOperation *op = [self operationWithPath:@"js/main.js"
+                                              params:params
+                                          httpMethod:@"GET"
+                                                 ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        completionBlock(completedOperation);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        errorBlock(error);
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
+- (void)fetchStatus:(NSString *)credentials
+                 onCompletion:(MKNKResponseBlock)completionBlock
+                      onError:(MKNKErrorBlock)errorBlock
+{
+    
+    NSDictionary *params;
+    
+    MKNetworkOperation *op = [self operationWithPath:@"api/monitoring/status"
+                                              params:params
+                                          httpMethod:@"GET"
+                                                 ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        completionBlock(completedOperation);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        errorBlock(error);
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
+- (void)fetchCurrentPlmn:(NSString *)credentials
+            onCompletion:(MKNKResponseBlock)completionBlock
+                 onError:(MKNKErrorBlock)errorBlock
+{
+    MKNetworkOperation *op = [self operationWithPath:@"api/net/current-plmn"
+                                              params:nil
+                                          httpMethod:@"GET"
+                                                 ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        completionBlock(completedOperation);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        errorBlock(error);
+    }];
+    
+    [self enqueueOperation:op];
+
+}
+
+- (void)fetchTrafficStats:(NSString *)credentials
+             onCompletion:(MKNKResponseBlock)completionBlock
+                  onError:(MKNKErrorBlock)errorBlock
+{
+    MKNetworkOperation *op = [self operationWithPath:@"api/monitoring/traffic-statistics"
+                                              params:nil
+                                          httpMethod:@"GET"
+                                                 ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        completionBlock(completedOperation);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        errorBlock(error);
+    }];
+    
+    [self enqueueOperation:op];
+
+}
+
 - (void)fetchLevelForCredentials:(NSString *)credentials
                     onCompletion:(MKNKResponseBlock)completionBlock
                          onError:(MKNKErrorBlock)errorBlock
@@ -17,7 +99,7 @@
 
     NSDictionary *params = @{ @"credentials" : credentials };
 
-    MKNetworkOperation *op = [self operationWithPath:@"rand.php"
+    MKNetworkOperation *op = [self operationWithPath:@"api/monitoring/status"
                                               params:params
                                           httpMethod:@"GET"
                                                  ssl:NO];

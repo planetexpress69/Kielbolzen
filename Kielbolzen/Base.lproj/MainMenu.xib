@@ -14,13 +14,29 @@
         <customObject id="Voe-Tx-rLC" customClass="JAKAppDelegate">
             <connections>
                 <outlet property="theMenu" destination="lom-Yn-nsA" id="qU9-9v-Hi5"/>
-                <outlet property="theMenuItemAtZero" destination="gwK-OF-6Wm" id="Lvo-qY-hXr"/>
+                <outlet property="theMenuItemAtOne" destination="pqh-DC-kQl" id="P1X-M4-zbG"/>
+                <outlet property="theMenuItemAtThree" destination="iyO-zV-h51" id="afG-TF-Qfr"/>
+                <outlet property="theMenuItemAtTwo" destination="zV6-lf-xnE" id="Qpt-Wk-OtZ"/>
+                <outlet property="theMenuItemAtZero" destination="gwK-OF-6Wm" id="pJ3-B3-wtM"/>
+                <outlet property="theMenuItemSettings" destination="hc1-Gr-G4l" id="xbu-ry-Rwa"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="lom-Yn-nsA">
             <items>
                 <menuItem title="Hello world!" enabled="NO" id="gwK-OF-6Wm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item" id="pqh-DC-kQl">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item" id="zV6-lf-xnE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item" id="iyO-zV-h51">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Settings..." id="hc1-Gr-G4l">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="Quit" keyEquivalent="q" id="Zrl-AW-fRS">

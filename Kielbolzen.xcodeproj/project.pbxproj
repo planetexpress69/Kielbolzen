@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012D2BB619B516CC00907EB3 /* signal_0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012D2BAF19B516CC00907EB3 /* signal_0.gif */; };
+		012D2BB719B516CC00907EB3 /* signal_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012D2BB019B516CC00907EB3 /* signal_1.gif */; };
+		012D2BB819B516CC00907EB3 /* signal_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012D2BB119B516CC00907EB3 /* signal_2.gif */; };
+		012D2BB919B516CC00907EB3 /* signal_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012D2BB219B516CC00907EB3 /* signal_3.gif */; };
+		012D2BBA19B516CC00907EB3 /* signal_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012D2BB319B516CC00907EB3 /* signal_4.gif */; };
+		012D2BBB19B516CC00907EB3 /* signal_5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012D2BB419B516CC00907EB3 /* signal_5.gif */; };
+		0131F4F619C0F2BD00907EB3 /* MacroImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131F4F519C0F2BD00907EB3 /* MacroImporter.m */; };
 		5B756581199E578C00BDA73B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B756580199E578C00BDA73B /* Cocoa.framework */; };
 		5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B756589199E578C00BDA73B /* InfoPlist.strings */; };
 		5B75658D199E578C00BDA73B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75658C199E578C00BDA73B /* main.m */; };
@@ -47,6 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		012D2BAF19B516CC00907EB3 /* signal_0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = signal_0.gif; sourceTree = "<group>"; };
+		012D2BB019B516CC00907EB3 /* signal_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = signal_1.gif; sourceTree = "<group>"; };
+		012D2BB119B516CC00907EB3 /* signal_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = signal_2.gif; sourceTree = "<group>"; };
+		012D2BB219B516CC00907EB3 /* signal_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = signal_3.gif; sourceTree = "<group>"; };
+		012D2BB319B516CC00907EB3 /* signal_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = signal_4.gif; sourceTree = "<group>"; };
+		012D2BB419B516CC00907EB3 /* signal_5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = signal_5.gif; sourceTree = "<group>"; };
+		0131F4F419C0F2BD00907EB3 /* MacroImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroImporter.h; sourceTree = "<group>"; };
+		0131F4F519C0F2BD00907EB3 /* MacroImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroImporter.m; sourceTree = "<group>"; };
 		144D405988104DB181AB381B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B75657D199E578C00BDA73B /* Kielbolzen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kielbolzen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B756580199E578C00BDA73B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -153,6 +168,12 @@
 		5B756586199E578C00BDA73B /* Kielbolzen */ = {
 			isa = PBXGroup;
 			children = (
+				012D2BAF19B516CC00907EB3 /* signal_0.gif */,
+				012D2BB019B516CC00907EB3 /* signal_1.gif */,
+				012D2BB119B516CC00907EB3 /* signal_2.gif */,
+				012D2BB219B516CC00907EB3 /* signal_3.gif */,
+				012D2BB319B516CC00907EB3 /* signal_4.gif */,
+				012D2BB419B516CC00907EB3 /* signal_5.gif */,
 				5BC633FD19A1FD7C00E66D6D /* statusicon_error.png */,
 				5BC633FE19A1FD7C00E66D6D /* statusicon_error@2x.png */,
 				5BC633E619A1EC4500E66D6D /* statusicon_0.png */,
@@ -174,6 +195,8 @@
 				5B756587199E578C00BDA73B /* Supporting Files */,
 				5BC633FA19A1ED6100E66D6D /* LovelyFetcherEngine.h */,
 				5BC633FB19A1ED6100E66D6D /* LovelyFetcherEngine.m */,
+				0131F4F419C0F2BD00907EB3 /* MacroImporter.h */,
+				0131F4F519C0F2BD00907EB3 /* MacroImporter.m */,
 			);
 			path = Kielbolzen;
 			sourceTree = "<group>";
@@ -288,15 +311,21 @@
 			files = (
 				5BC633F719A1EC4500E66D6D /* statusicon_3@2x.png in Resources */,
 				5BC633F519A1EC4500E66D6D /* statusicon_2@2x.png in Resources */,
+				012D2BBB19B516CC00907EB3 /* signal_5.gif in Resources */,
+				012D2BB819B516CC00907EB3 /* signal_2.gif in Resources */,
+				012D2BB719B516CC00907EB3 /* signal_1.gif in Resources */,
 				5BC633F219A1EC4500E66D6D /* statusicon_1.png in Resources */,
+				012D2BBA19B516CC00907EB3 /* signal_4.gif in Resources */,
 				5BC633F119A1EC4500E66D6D /* statusicon_0@2x.png in Resources */,
 				5B9B65B7199E61830012B99E /* statusicon_default@2x.png in Resources */,
 				5B75658B199E578C00BDA73B /* InfoPlist.strings in Resources */,
+				012D2BB919B516CC00907EB3 /* signal_3.gif in Resources */,
 				5BC6340219A1FFA500E66D6D /* README.md in Resources */,
 				5BC633F919A1EC4500E66D6D /* statusicon_4@2x.png in Resources */,
 				5B756599199E578C00BDA73B /* Images.xcassets in Resources */,
 				5BC633F619A1EC4500E66D6D /* statusicon_3.png in Resources */,
 				5BC633F019A1EC4500E66D6D /* statusicon_0.png in Resources */,
+				012D2BB619B516CC00907EB3 /* signal_0.gif in Resources */,
 				5BC633F819A1EC4500E66D6D /* statusicon_4.png in Resources */,
 				5B756597199E578C00BDA73B /* MainMenu.xib in Resources */,
 				5BC633F319A1EC4500E66D6D /* statusicon_1@2x.png in Resources */,
@@ -356,6 +385,7 @@
 			files = (
 				5BC633FC19A1ED6100E66D6D /* LovelyFetcherEngine.m in Sources */,
 				5B75658D199E578C00BDA73B /* main.m in Sources */,
+				0131F4F619C0F2BD00907EB3 /* MacroImporter.m in Sources */,
 				5B756594199E578C00BDA73B /* JAKAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
