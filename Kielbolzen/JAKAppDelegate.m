@@ -129,12 +129,8 @@
             if (sNetworkType.length == 0 && sNetworkTypeEx.length > 0) {
                 sNetworkType = sNetworkTypeEx;
             }
-
-            for (NSString *key in macroNetTypes) {
-                if (((NSNumber *)macroNetTypes[key]).intValue == sNetworkType.intValue) {
-                    sNetMode = key;
-                }
-            }
+            
+            sNetMode = macroNetTypes[sNetworkType];
             
             NSString *sLevelStr = @"No Service";
             

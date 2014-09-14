@@ -11,7 +11,6 @@
 @interface MacroImporter : NSObject
 
 @property (strong, nonatomic) NSMutableDictionary *networkTypes;
-@property (strong, nonatomic) NSMutableDictionary *networkTypesEx;
 @property (strong, nonatomic) NSMutableDictionary *plmnRat;
 
 - (void)extractNetworkTypes:(NSString *)sPayload;
