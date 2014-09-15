@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,15 +10,17 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="JAKAppDelegate">
             <connections>
+                <outlet property="theIPField" destination="hFO-mo-2MU" id="6Fe-Hl-ZZl"/>
                 <outlet property="theMenu" destination="lom-Yn-nsA" id="qU9-9v-Hi5"/>
                 <outlet property="theMenuItemAtOne" destination="pqh-DC-kQl" id="P1X-M4-zbG"/>
                 <outlet property="theMenuItemAtThree" destination="iyO-zV-h51" id="afG-TF-Qfr"/>
                 <outlet property="theMenuItemAtTwo" destination="zV6-lf-xnE" id="Qpt-Wk-OtZ"/>
                 <outlet property="theMenuItemAtZero" destination="gwK-OF-6Wm" id="pJ3-B3-wtM"/>
                 <outlet property="theMenuItemSettings" destination="hc1-Gr-G4l" id="xbu-ry-Rwa"/>
+                <outlet property="thePanel" destination="6RY-W4-hWS" id="Qbu-dJ-idb"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -27,18 +29,22 @@
                 <menuItem title="Hello world!" enabled="NO" id="gwK-OF-6Wm">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item" id="pqh-DC-kQl">
+                <menuItem title="Item" enabled="NO" id="pqh-DC-kQl">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item" id="zV6-lf-xnE">
+                <menuItem title="Item" enabled="NO" id="zV6-lf-xnE">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item" id="iyO-zV-h51">
+                <menuItem title="Item" enabled="NO" id="iyO-zV-h51">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Settings..." id="hc1-Gr-G4l">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem isSeparatorItem="YES" id="oLo-KF-7Oe"/>
+                <menuItem title="Settings..." keyEquivalent="," id="hc1-Gr-G4l">
+                    <connections>
+                        <action selector="openSettingsPanel:" target="Voe-Tx-rLC" id="ihb-rZ-W4D"/>
+                    </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="fxn-S3-FXu"/>
                 <menuItem title="Quit" keyEquivalent="q" id="Zrl-AW-fRS">
                     <connections>
                         <action selector="terminate:" target="-1" id="dUO-Gv-EsS"/>
@@ -46,5 +52,26 @@
                 </menuItem>
             </items>
         </menu>
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="6RY-W4-hWS" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="120" y="65" width="276" height="97"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="a9J-k6-NSn">
+                <rect key="frame" x="0.0" y="0.0" width="276" height="97"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFO-mo-2MU">
+                        <rect key="frame" x="20" y="37" width="236" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Mifi's IP address" drawsBackground="YES" id="qOH-Un-FBd">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="168" y="-252.5"/>
+        </window>
     </objects>
 </document>
