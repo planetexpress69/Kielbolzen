@@ -42,9 +42,9 @@
     for (NSTextCheckingResult *match in aMatches) {
         NSString *matchString = [[sPayload substringWithRange: [match rangeAtIndex:1]]
                                  stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSNumber *matchNumber = [NSNumber numberWithInt: [sPayload substringWithRange: [match rangeAtIndex:2]].intValue];
+        NSString *matchNumber = [sPayload substringWithRange: [match rangeAtIndex:2]];
         
-        [dResult setObject:matchNumber forKey:matchString];
+        [dResult setObject:matchString forKey:matchNumber];
         
     }
     self.plmnRat = dResult.allKeys.count > 0 ? dResult : nil;
@@ -75,10 +75,6 @@
         NSString *matchString = [[sPayload substringWithRange: [match rangeAtIndex:1]]
                                   stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSString *matchNumber = [sPayload substringWithRange: [match rangeAtIndex:2]];
-
-//        NSLog(@"%@, %@, %@", [sPayload substringWithRange: [match rangeAtIndex:0]],
-//              [sPayload substringWithRange: [match rangeAtIndex:1]],
-//              [sPayload substringWithRange: [match rangeAtIndex:2]]);
         
         [dResult setObject:matchString forKey:matchNumber];
 
