@@ -106,7 +106,7 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
                                                  name:kbBytesInOutChangedNotification object:nil];
 
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"mifi"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"192.168.0.1" forKey:@"mifi"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.1" forKey:@"mifi"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
