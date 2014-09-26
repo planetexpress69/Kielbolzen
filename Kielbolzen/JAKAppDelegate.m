@@ -9,17 +9,6 @@
 #import "JAKAppDelegate.h"
 #import <XMLReader/XMLReader.h>
 
-NSString * const kbHostKey      = @"Host";
-NSString * const kbIntervalKey  = @"Interval";
-
-NSString * const kbSignalLevelChangedNotification   = @"kbSignalLevelChangedNotification";
-NSString * const kbSignalIconChangedNotification    = @"kbSignalIconChangedNotification";
-NSString * const kbBatteryLevelChangedNotification  = @"kbBatteryLevelChangedNotification";
-NSString * const kbNetworkTypeChangedNotification   = @"kbNetworkTypeChangedNotification";
-NSString * const kbPlmnRatChangedNotification       = @"kbPlmnRatChangedNotification";
-NSString * const kbProviderChangedNotification      = @"kbProviderChangedNotification";
-NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotification";
-
 @implementation JAKAppDelegate
 
 
@@ -29,92 +18,97 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
 - (instancetype)init
 {
     if (self = [super init]) {
-        _status= 0;
-        _sigLevel= 0;
-        _sigIcon= 0;
-        _batLevel= 0;
-        _bytesIn= 0;
-        _bytesOut= 0;
-        _plmnRat= @"0";
-        _provider= @"";
-        _netType= @"";
-        _netTypeEx= @"";
-        
-        _noService= [[NSMutableAttributedString alloc] initWithString:@"No Service"];
+
+        _serviceStatus  = 0;
+        _signalLevel    = 0;
+        _signalIcon     = 0;
+        _batteryLevel   = 0;
+        _bytesIn        = 0;
+        _bytesOut       = 0;
+        _plmnRat        = @"0";
+        _provider       = @"";
+        _netType        = @"";
+        _netTypeEx      = @"";
+
+        _noService      = [[NSMutableAttributedString alloc] initWithString:@"No Service"];
         [_noService addAttribute:NSFontAttributeName
                            value:[NSFont menuBarFontOfSize:12]
-                           range:NSMakeRange(0, 10)];
-        
-        _error= [[NSMutableAttributedString alloc] initWithString:@"!!! Error !!!"];
+                           range:NSMakeRange(0, _noService.length)];
+
+        _error          = [[NSMutableAttributedString alloc] initWithString:@"!!! Error !!!"];
         [_error addAttribute:NSFontAttributeName
                        value:[NSFont menuBarFontOfSize:12]
-                       range:NSMakeRange(0, 13)];
-        
-        _sigIcons= [NSArray arrayWithObjects: @"○○○○○", @"●○○○○", @"●●○○○", @"●●●○○", @"●●●●○", @"●●●●●", nil];
-        
+                       range:NSMakeRange(0, _error.length)];
+
+        _noDevice          = [[NSMutableAttributedString alloc] initWithString:@"No device!"];
+        [_noDevice addAttribute:NSFontAttributeName
+                       value:[NSFont menuBarFontOfSize:12]
+                       range:NSMakeRange(0, _noDevice.length)];
+
+        _deviceInit          = [[NSMutableAttributedString alloc] initWithString:@"Init device..."];
+        [_deviceInit addAttribute:NSFontAttributeName
+                          value:[NSFont menuBarFontOfSize:12]
+                          range:NSMakeRange(0, _deviceInit.length)];
+
+        _sigIcons       = @[@"○○○○○",
+                            @"●○○○○",
+                            @"●●○○○",
+                            @"●●●○○",
+                            @"●●●●○",
+                            @"●●●●●"];
+
+        self.container  = [NSMutableDictionary new];
+
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
 - (void)awakeFromNib
 {
-    self.theMenuItemAtZero.title    = @"Initializing...";
-    self.theMenuItemAtOne.title     = @"Waiting...";
-    self.theMenuItemAtTwo.title     = @"Waiting...";
-    self.theMenuItemAtThree.title   = @"Waiting...";
+    self.theStatusBar                   = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    self.theStatusBar.attributedTitle   = _noService;
+    self.theStatusBar.menu              = self.theMenu;
+    self.theStatusBar.highlightMode     = YES;
+    // --------------------------------------------------------------------------------------
+    self.theMenuItemAtZero.title        = @"Initializing...";
+    self.theMenuItemAtOne.title         = @"Waiting...";
+    self.theMenuItemAtTwo.title         = @"Waiting...";
+    self.theMenuItemAtThree.title       = @"Waiting...";
     [self.theMenuItemSettings setEnabled:YES];
-
-    self.connected                  = NO;
-    self.running                    = NO;
-    self.theStatusBar               = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    self.theStatusBar.attributedTitle  = _noService;
-    self.theStatusBar.menu          = self.theMenu;
-    self.theStatusBar.highlightMode = YES;
-    self.thePanel.delegate          = self;
-
-    Reachability *reachabilityInfo;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(myReachabilityDidChangedMethod:)
-                                                 name:kReachabilityChangedNotification
-                                               object:reachabilityInfo];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(signalLevelDidChangeMethod:)
-                                                 name:kbSignalLevelChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(signalLevelDidChangeMethod:)
-                                                 name:kbNetworkTypeChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(signalIconDidChangeMethod:)
-                                                 name:kbSignalIconChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(signalIconDidChangeMethod:)
-                                                 name:kbPlmnRatChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(batteryLevelDidChangeMethod:)
-                                                 name:kbBatteryLevelChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(providerDidChangeMethod:)
-                                                 name:kbProviderChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(bytesInOutDidChangeMethod:)
-                                                 name:kbBytesInOutChangedNotification object:nil];
-
+    // --------------------------------------------------------------------------------------
+    self.connected                      = NO;
+    self.running                        = NO;
+    // --------------------------------------------------------------------------------------
+    self.thePanel.delegate              = self;
+    // --------------------------------------------------------------------------------------
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"mifi"]) {
         [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.1" forKey:@"mifi"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
+
 // ---------------------------------------------------------------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [self initFetcher];
+    [self startTimerWithInterval:1.0];
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+#pragma mark - Init the fetcher with the current hostname and start the timer...
+// ---------------------------------------------------------------------------------------------------------------------
+- (void)startTimerWithInterval:(CGFloat)interval
+{
+    NSString *host                  = [[NSUserDefaults standardUserDefaults]objectForKey:@"mifi"];
+    self.lovelyFetcherEngine        = [[LovelyFetcherEngine alloc] initWithHostName:host];
+    self.theTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(payload:) userInfo:nil repeats:YES];
 }
 
 
@@ -123,34 +117,62 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
 // ---------------------------------------------------------------------------------------------------------------------
 - (IBAction)payload:(id)sender
 {
-    // we're not connected at all, so get outta here
+    NSLog(@"Tick!");
+
+    // we're not connected, so tell the UI and ping
     if (!self.isConnected) {
-        self.theMenuItemAtZero.title = @"No connection. :-(";
-        self.theMenuItemAtOne.title= @"TX/RX: -/-";
-        self.theMenuItemAtTwo.title= @"Provider:-";
-        self.theMenuItemAtThree.title= @"Battery: -";
-        self.theStatusBar.attributedTitle = _error;
-        return;
-    }
+
+        [self setUIToNotConnected];
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+
+            NSString *sURL = [NSString stringWithFormat:@"http://%@/js/main.js", [[NSUserDefaults standardUserDefaults] objectForKey:@"mifi"]];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sURL]
+                                                                   cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                               timeoutInterval:5.0];
+
+            [request setHTTPMethod:@"GET"];
+
+            NSURLResponse   *response   = [NSURLResponse new];
+            NSError         *error      = nil;
+
+            [NSURLConnection sendSynchronousRequest:request
+                                  returningResponse:&response
+                                              error:&error];
+
+            if (response && !error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Connected!");
+                    self.connected = YES;
+                });
+
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Not connected!");
+                    self.connected = NO;
+                });
+
+            }
+        });
+    } else {
+
+        //[self updateUI];
 
     // we're connected but haven't gotten stuff we rely on
     if (self.macroImporter.networkTypes == nil) {
         [self.lovelyFetcherEngine fetchMainjs:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
-            if (!self.isConnected) {
-                self.theMenuItemAtZero.title = @"No connection. :-(";
-                self.theStatusBar.attributedTitle = _error;
-                return;
-            }
-            [self.macroImporter extractNetworkTypes: completedOperation.responseString];
-            [self.macroImporter extractPlmnRat: completedOperation.responseString];
+            [self.macroImporter extractNetworkTypes:completedOperation.responseString];
+            [self.macroImporter extractPlmnRat:completedOperation.responseString];
             NSLog(@"Could have gotten the stuff from mains.js I'm interested in. Nice!");
+            self.theStatusBar.attributedTitle = _deviceInit;
         } onError:^(NSError *error) {
             DLog(@"error: %@", error);
             self.theMenuItemAtZero.title = error.localizedDescription;
-            self.theMenuItemAtOne.title= @"TX/RX: -/-";
-            self.theMenuItemAtTwo.title= @"Provider:-";
+            self.theMenuItemAtOne.title= @"RX/TX: -/-";
+            self.theMenuItemAtTwo.title= @"Provider: -";
             self.theMenuItemAtThree.title= @"Battery: -";
             self.theStatusBar.attributedTitle = _error;
+            self.connected = NO;
         }];
         // get outta here. next time we may have gotten the stuff from main.js...
         return;
@@ -167,55 +189,48 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
         NSError *parsingError   = nil;
         NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
                                                               error:&parsingError];
-
         if (dResponse && !parsingError) {
-            NSString *sLevel =  dResponse[@"response"][@"SignalStrength"][@"text"];
-            NSString *sIcon =  dResponse[@"response"][@"SignalIcon"][@"text"];
-            NSString *sBatLevel =  dResponse[@"response"][@"BatteryPercent"][@"text"];
-            NSString *sNetworkType = dResponse[@"response"][@"CurrentNetworkType"][@"text"];
-            NSString *sNetworkTypeEx = dResponse[@"response"][@"CurrentNetworkTypeEx"][@"text"];
-            
-            _status= ((NSString *)dResponse[@"response"][@"ServiceStatus"][@"text"]).intValue;
-            
-            if (_sigLevel != sLevel.intValue) {
-                _sigLevel= sLevel.intValue;
-                [[NSNotificationCenter defaultCenter] postNotificationName: kbSignalLevelChangedNotification object:self];
+            NSString *sLevel            = dResponse[@"response"][@"SignalStrength"][@"text"];
+            NSString *sIcon             = dResponse[@"response"][@"SignalIcon"][@"text"];
+            NSString *sBatLevel         = dResponse[@"response"][@"BatteryPercent"][@"text"];
+            NSString *sNetworkType      = dResponse[@"response"][@"CurrentNetworkType"][@"text"];
+            NSString *sNetworkTypeEx    = dResponse[@"response"][@"CurrentNetworkTypeEx"][@"text"];
+
+            _serviceStatus = ((NSString *)dResponse[@"response"][@"ServiceStatus"][@"text"]).intValue;
+
+            if (_signalLevel != sLevel.intValue) {
+                _signalLevel = sLevel.intValue;
             }
-            
-            if (_sigIcon != sIcon.intValue)
-            {
-                _sigIcon= sIcon.intValue;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbSignalIconChangedNotification object:self];
+
+            if (_signalIcon != sIcon.intValue) {
+                _signalIcon = sIcon.intValue;
             }
-            
-            if (_batLevel != sBatLevel.intValue) {
-                _batLevel= sBatLevel.intValue;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbBatteryLevelChangedNotification
-                                                                    object:self];
+
+            if (_batteryLevel != sBatLevel.intValue) {
+                _batteryLevel = sBatLevel.intValue;
             }
-            
+
             if (sNetworkType && ![_netType isEqualToString:sNetworkType]) {
-                _netType= [NSString stringWithString:sNetworkType];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbNetworkTypeChangedNotification
-                                                                    object:self];
+                _netType = [NSString stringWithString:sNetworkType];
             }
-            
-            if (sNetworkTypeEx && ![_netTypeEx isEqualToString:sNetworkTypeEx])
-            {
-                _netTypeEx= [NSString stringWithString:sNetworkTypeEx];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbNetworkTypeChangedNotification
-                                                                    object:self];
+
+            if (sNetworkTypeEx && ![_netTypeEx isEqualToString:sNetworkTypeEx]) {
+                _netTypeEx = [NSString stringWithString:sNetworkTypeEx];
             }
+
         } else {
-            self.theMenuItemAtZero.title = @"Garbled response";
-            self.theStatusBar.attributedTitle = _error;
+            self.theMenuItemAtZero.title        = @"Garbled response";
+            self.theStatusBar.attributedTitle   = _error;
         }
         self.running = NO;
+        [self updateUI];
+
     } onError:^(NSError *error) {
         DLog(@"error: %@", error);
-        self.theMenuItemAtZero.title = error.localizedDescription;
-        self.theStatusBar.attributedTitle = _error;
+        self.theMenuItemAtZero.title        = error.localizedDescription;
+        self.theStatusBar.attributedTitle   = _error;
         self.running = NO;
+        self.connected = NO;
     }];
 
 
@@ -224,32 +239,31 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
         NSError *parsingError   = nil;
         NSDictionary *dResponse = [XMLReader dictionaryForXMLString:completedOperation.responseString
                                                               error:&parsingError];
-
         if (dResponse && !parsingError) {
-            NSString *sShort =  dResponse[@"response"][@"ShortName"][@"text"];
-            NSString *sPlmnRat =  dResponse[@"response"][@"Rat"][@"text"];
-            
+            NSString *sShort    = dResponse[@"response"][@"ShortName"][@"text"];
+            NSString *sPlmnRat  = dResponse[@"response"][@"Rat"][@"text"];
+
             if (sPlmnRat && ![_plmnRat isEqualToString:sPlmnRat]) {
-                _plmnRat= [NSString stringWithString:sPlmnRat];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbPlmnRatChangedNotification
-                                                                    object:self];
+                _plmnRat = [NSString stringWithString:sPlmnRat];
             }
-            
+
             if (sShort && ![_provider isEqualToString:sShort]) {
-                _provider= [NSString stringWithString:sShort];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbProviderChangedNotification
-                                                                    object:self];
+                _provider = [NSString stringWithString:sShort];
             }
+
         } else {
-            self.theMenuItemAtTwo.title = @"Garbled response";
-            self.theStatusBar.attributedTitle = _error;
+            self.theMenuItemAtTwo.title         = @"Garbled response";
+            self.theStatusBar.attributedTitle   = _error;
         }
         self.running = NO;
+        [self updateUI];
+
+
     } onError:^(NSError *error) {
-        DLog(@"error: %@", error);
-        self.theMenuItemAtZero.title    = error.localizedDescription;
-        self.theStatusBar.attributedTitle         = _error;
-        self.running = NO;
+        self.theMenuItemAtZero.title        = error.localizedDescription;
+        self.theStatusBar.attributedTitle   = _error;
+        self.running                        = NO;
+        self.connected                      = NO;
     }];
 
     [self.lovelyFetcherEngine fetchTrafficStats:@"foo" onCompletion:^(MKNetworkOperation *completedOperation) {
@@ -265,102 +279,30 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
              NSString *sCTime =  dResponse[@"response"][@"CurrentConnectTime"][@"text"];
              NSString *sCUploadRate =  dResponse[@"response"][@"CurrentUploadRate"][@"text"];
              */
-            NSString *sBytesOut  =  dResponse[@"response"][@"CurrentUpload"][@"text"];
-            NSString *sBytesIn =  dResponse[@"response"][@"CurrentDownload"][@"text"];
-            
+            NSString *sBytesOut = dResponse[@"response"][@"CurrentUpload"][@"text"];
+            NSString *sBytesIn  = dResponse[@"response"][@"CurrentDownload"][@"text"];
+
             if (_bytesIn != sBytesIn.intValue) {
                 _bytesIn= sBytesIn.intValue;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbBytesInOutChangedNotification object:self];
             }
-            
+
             if (_bytesOut != sBytesOut.intValue) {
                 _bytesOut= sBytesOut.intValue;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kbBytesInOutChangedNotification object:self];
             }
         } else {
-            self.theMenuItemAtOne.title = @"Garbled response";
-            self.theStatusBar.attributedTitle = _error;
+            self.theMenuItemAtOne.title         = @"Garbled response";
+            self.theStatusBar.attributedTitle   = _error;
         }
         self.running = NO;
+        [self updateUI];
+
+
     } onError:^(NSError *error) {
-        DLog(@"error: %@", error);
-        self.theMenuItemAtZero.title = error.localizedDescription;
-        self.theStatusBar.attributedTitle = _error;
-        self.running = NO;
+        self.theMenuItemAtZero.title        = error.localizedDescription;
+        self.theStatusBar.attributedTitle   = _error;
+        self.running                        = NO;
+
     }];
-
-}
-
-- (void)signalLevelDidChangeMethod:(NSNotification *)notification
-{
-    DLog(@"Received notification: %@", notification);
-    
-    NSString *sNetMode = [[self.macroImporter networkTypes] objectForKey: _netTypeEx.length > 0 ? _netTypeEx : _netType];
-    
-    self.theMenuItemAtZero.title = _status==2 ? [NSString stringWithFormat: @"Level: %d%% (%@)", _sigLevel, sNetMode] : @"No Service";
-}
-
-- (void)signalIconDidChangeMethod:(NSNotification *)notification
-{
-    DLog(@"Received notification: %@", notification);
-    
-    NSString *sPlmnRat = [[self.macroImporter plmnRat] objectForKey: _plmnRat];
-    
-    self.theStatusBar.image= nil;
-    if (_sigLevel > 0) {
-        NSString *s= [NSString stringWithFormat:@"%@ %@", _sigIcons[_sigIcon], sPlmnRat?sPlmnRat:@""];
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:s];
-        
-        [attrStr addAttribute:NSFontAttributeName
-                        value:[NSFont menuBarFontOfSize:12]
-                        range:NSMakeRange(0, attrStr.length)];
-        
-        self.theStatusBar.attributedTitle = attrStr;
-        
-    } else {
-        self.theStatusBar.attributedTitle= _noService;
-    }
-}
-
-- (void)batteryLevelDidChangeMethod:(NSNotification *)notification
-{
-    DLog(@"Received notification: %@", notification);
-    self.theMenuItemAtThree.title =[NSString stringWithFormat:@"Battery: %d%%", _batLevel];
-}
-
-- (void)providerDidChangeMethod:(NSNotification *)notification
-{
-    DLog(@"Received notification: %@", notification);
-    self.theMenuItemAtTwo.title = _provider.length ? [NSString stringWithFormat:@"Provider: %@", _provider] : @"No Service";
-}
-
-- (void)bytesInOutDidChangeMethod:(NSNotification *)notification
-{
-    DLog(@"Received notification: %@", notification);
-    self.theMenuItemAtOne.title = [NSString stringWithFormat:@"TX: %@/%@",
-                                   [NSByteCountFormatter stringFromByteCount:_bytesIn countStyle:NSByteCountFormatterCountStyleFile],
-                                   [NSByteCountFormatter stringFromByteCount:_bytesOut countStyle:NSByteCountFormatterCountStyleFile]];
-}
-
-// ---------------------------------------------------------------------------------------------------------------------
-#pragma mark - Callback for coinnection stte changes.
-// ---------------------------------------------------------------------------------------------------------------------
-- (void)myReachabilityDidChangedMethod:(NSNotification *)notification
-{
-    Reachability *reachability = (Reachability *)notification.object;
-
-    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
-    if (internetStatus != NotReachable) {
-
-        // necessary to re-read the main.js?
-        self.macroImporter.networkTypes = nil;
-
-        DLog(@"Connected, so move on!");
-        self.connected = YES;
-    }
-    else {
-        DLog(@"No internet :-(");
-        self.connected = NO;
     }
 }
 
@@ -391,8 +333,10 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
     NSLog(@"Window will close and it's text field's value is: %@", self.theIPField.stringValue);
     [[NSUserDefaults standardUserDefaults]setObject:self.theIPField.stringValue forKey:@"mifi"];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    [self initFetcher];
-
+    self.connected = NO;
+    [self.theTimer invalidate];
+    self.theTimer = nil;
+    [self startTimerWithInterval:1.0];
 }
 
 
@@ -423,14 +367,17 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
 // ---------------------------------------------------------------------------------------------------------------------
 - (void)initFetcher
 {
+
+    NSLog(@"Init fetcher...");
+
     self.theMenuItemAtOne.title     = @"Waiting...";
     self.theMenuItemAtTwo.title     = @"Waiting...";
     self.theMenuItemAtThree.title   = @"Waiting...";
 
-
-    if (self.theTimer != nil) {
+    if (self.theTimer != nil && self.theTimer.isValid) {
         NSLog(@"Invalidate timer...");
         [self.theTimer invalidate];
+        [self updateUI];
     }
 
     self.macroImporter              = nil;
@@ -444,5 +391,78 @@ NSString * const kbBytesInOutChangedNotification    = @"kbBytesInOutChangedNotif
                                                                       repeats:YES];
 }
 
+- (void)updateUI
+{
+    if (_signalLevel > 0) {
+        NSString *s = [NSString stringWithFormat:@"%@ %@", _sigIcons[_signalIcon], [[self.macroImporter networkTypes]objectForKey:_plmnRat] ? [[self.macroImporter networkTypes]objectForKey:_plmnRat] : @""];
+
+        if (![s isEqualToString:self.theStatusBar.title]) {
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:s];
+            [attrStr addAttribute:NSFontAttributeName
+                            value:[NSFont menuBarFontOfSize:12]
+                            range:NSMakeRange(0, attrStr.length)];
+            self.theStatusBar.attributedTitle = attrStr;
+        }
+
+    } else {
+        if (![_noService.string isEqualToString:self.theStatusBar.title]) {
+            self.theStatusBar.attributedTitle= _noService;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    NSString *sNetMode = [[self.macroImporter networkTypes] objectForKey: _netTypeEx.length > 0 ? _netTypeEx : _netType];
+    NSString *sServiceStatus = _serviceStatus == 2 ? [NSString stringWithFormat:@"Level: %d%% (%@)", _signalLevel, sNetMode] : @"No Service";
+    if (![sServiceStatus isEqualToString:self.theMenuItemAtZero.title]) {
+        self.theMenuItemAtZero.title = sServiceStatus;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    NSString *sTxRx = [NSString stringWithFormat:@"RX/TX: %@/%@",
+                       [NSByteCountFormatter stringFromByteCount:_bytesIn
+                                                      countStyle:NSByteCountFormatterCountStyleFile],
+                       [NSByteCountFormatter stringFromByteCount:_bytesOut
+                                                      countStyle:NSByteCountFormatterCountStyleFile]];
+    if (![sTxRx isEqualToString:self.theMenuItemAtOne.title]) {
+        self.theMenuItemAtOne.title = sTxRx;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    NSString *sProvider = _provider.length ? [NSString stringWithFormat:@"Provider: %@", _provider] : @"No Service";
+    if (![sProvider isEqualToString:self.theMenuItemAtTwo.title]) {
+        self.theMenuItemAtTwo.title = sProvider;
+    }
+    
+    // -----------------------------------------------------------------------------------------------------------------
+    NSString *sBattery = [NSString stringWithFormat:@"Battery: %d%%", _batteryLevel];
+    if (![sBattery isEqualToString:self.theMenuItemAtThree.title]) {
+        self.theMenuItemAtThree.title = sBattery;
+    }
+}
+
+- (void)setConnected:(BOOL)connected
+{
+    _connected = connected;
+    if (_connected) {
+        // kill the fast timer and start with a mellow one....
+        [self.theTimer invalidate];
+        self.theTimer = nil;
+        [self startTimerWithInterval:5.0];
+    } 
+    self.theStatusBar.attributedTitle = _connected ? _deviceInit : _noDevice;
+}
+
+- (BOOL)isConnected {
+    return _connected;
+}
+
+- (void)setUIToNotConnected
+{
+    self.theStatusBar.attributedTitle   = _noDevice;
+    self.theMenuItemAtZero.title        = @"No connection. :-(";
+    self.theMenuItemAtOne.title         = @"RX/TX: -/-";
+    self.theMenuItemAtTwo.title         = @"Provider: -";
+    self.theMenuItemAtThree.title       = @"Battery: -";
+}
 
 @end

@@ -20,7 +20,6 @@
                                           httpMethod:@"GET"
                                                  ssl:NO];
 
-    
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         completionBlock(completedOperation);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
