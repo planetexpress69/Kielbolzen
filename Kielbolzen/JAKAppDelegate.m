@@ -394,7 +394,7 @@
 - (void)updateUI
 {
     if (_signalLevel > 0) {
-        NSString *s = [NSString stringWithFormat:@"%@ %@", _sigIcons[_signalIcon], [[self.macroImporter networkTypes]objectForKey:_plmnRat] ? [[self.macroImporter networkTypes]objectForKey:_plmnRat] : @""];
+        NSString *s = [NSString stringWithFormat:@"%@ %@", _sigIcons[_signalIcon], [[self.macroImporter plmnRat]objectForKey:_plmnRat] ? [[self.macroImporter plmnRat]objectForKey:_plmnRat] : @""];
 
         if (![s isEqualToString:self.theStatusBar.title]) {
             NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:s];
